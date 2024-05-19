@@ -1,8 +1,6 @@
-name = "Борис"
-print('Имя: ' + name)
-age = 38
-print('Возраст:', age)
-age += 1
-print('Новый возраст:', age)
-is_student = True
-print('Студент:', is_student)
+kolich_vipoln_DZ = 12
+kolich_zatrach_chasov = 1.5
+nazv_kursa = 'Python'
+vremya_na_odno_zadanie = kolich_zatrach_chasov / kolich_vipoln_DZ
+print("Курс: " + nazv_kursa + ', всего задач:', kolich_vipoln_DZ, ", затрачено часов:",
+      kolich_zatrach_chasov, ", среднее время выпонения", vremya_na_odno_zadanie, "часа.")
