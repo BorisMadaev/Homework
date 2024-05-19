@@ -1,6 +1,6 @@
-num1 = 5
-num2 = 3
-sum = num1 + num2
-print(sum)
-result = sum + num1 * num2
-print(result)
+stroka = "Программирование"
+print(stroka[0])
+print(stroka[-1])
+print(stroka[8:13])
+print(stroka[::-1])
+print(stroka[::2])
