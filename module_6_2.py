@@ -33,7 +33,7 @@ class Vehicle:
         if self.__COLOR_VARIANTS.count(self.new_color.lower()):
             self.__color = self.new_color
         else:
-            print(f"Нельзя сменить цвет на {self.new_color}")
+            print(f"\033[31mНельзя сменить цвет на {self.new_color}\033[39m")
 
 
 class Sedan(Vehicle):
