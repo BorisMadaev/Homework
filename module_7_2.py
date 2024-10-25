@@ -1,10 +1,10 @@
 def custom_write(file_name, strings):
     strings_positions = {}
+    file = open(file_name, 'a', encoding='utf-8')
     for i in range(len(strings)):
-        file = open(file_name, 'a', encoding='utf-8')
-        strings_positions.update({(str(i+1), file.tell()): str(strings[i])})
+        strings_positions.update({(i+1, file.tell()): str(strings[i])})
         file.write(f'{str(strings[i])}\n')
-        file.close()
+    file.close()
     return strings_positions
 
 info = [
