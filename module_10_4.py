@@ -37,8 +37,21 @@ class Cafe:
                 if self.tables[j].guest is None:
                     count_free_table += 1
                     self.tables[j].guest = self.guests[i].name
-                    self.thread1 = threading.Thread(target=Guest.run, args=(self.tables[j].guest,), daemon=True)
-                    self.thread1.start()
+                    if j == 0:
+                        self.thread1 = threading.Thread(target=Guest.run, args=(self.tables[j].guest,), daemon=True)
+                        self.thread1.start()
+                    if j == 1:
+                        self.thread2 = threading.Thread(target=Guest.run, args=(self.tables[j].guest,), daemon=True)
+                        self.thread2.start()
+                    if j == 2:
+                        self.thread3 = threading.Thread(target=Guest.run, args=(self.tables[j].guest,), daemon=True)
+                        self.thread3.start()
+                    if j == 3:
+                        self.thread4 = threading.Thread(target=Guest.run, args=(self.tables[j].guest,), daemon=True)
+                        self.thread4.start()
+                    if j == 4:
+                        self.thread5 = threading.Thread(target=Guest.run, args=(self.tables[j].guest,), daemon=True)
+                        self.thread5.start()
                     print(f'{self.tables[j].guest} сел(-а) за стол номер {j+1}')
                     break
                 elif j == len(self.tables)-1 and count_free_table == 0:
@@ -50,17 +63,50 @@ class Cafe:
         while True:
             for i in (range(len(tables))):
                 if self.tables[i].guest is not None:
-                    if not self.thread1.is_alive():
+                    if not self.thread1.is_alive() and i == 0:
                         free_tables += 1
                         print(f'{self.tables[i].guest} покушал(-а) и ушёл(ушла)')
                         print(f'Стол номер {i+1} свободен')
+                        self.tables[i].guest = None
+                    elif not self.thread2.is_alive() and i == 1:
+                        free_tables += 1
+                        print(f'{self.tables[i].guest} покушал(-а) и ушёл(ушла)')
+                        print(f'Стол номер {i + 1} свободен')
+                        self.tables[i].guest = None
+                    elif not self.thread3.is_alive() and i == 2:
+                        free_tables += 1
+                        print(f'{self.tables[i].guest} покушал(-а) и ушёл(ушла)')
+                        print(f'Стол номер {i + 1} свободен')
+                        self.tables[i].guest = None
+                    elif not self.thread4.is_alive() and i == 3:
+                        free_tables += 1
+                        print(f'{self.tables[i].guest} покушал(-а) и ушёл(ушла)')
+                        print(f'Стол номер {i + 1} свободен')
+                        self.tables[i].guest = None
+                    elif not self.thread5.is_alive() and i == 4:
+                        free_tables += 1
+                        print(f'{self.tables[i].guest} покушал(-а) и ушёл(ушла)')
+                        print(f'Стол номер {i + 1} свободен')
                         self.tables[i].guest = None
                 elif not self.queue.empty():
                     free_tables -= 1
                     self.tables[i].guest = self.queue.get()
                     print(f'{self.tables[i].guest} вышел(-ла) из очереди и сел(-а) за стол номер {i+1}')
-                    self.thread1 = threading.Thread(target=Guest.run, args=(self.tables[i].guest,), daemon=True)
-                    self.thread1.start()
+                    if i == 0:
+                        self.thread1 = threading.Thread(target=Guest.run, args=(self.tables[i].guest,), daemon=True)
+                        self.thread1.start()
+                    if i == 1:
+                        self.thread2 = threading.Thread(target=Guest.run, args=(self.tables[i].guest,), daemon=True)
+                        self.thread2.start()
+                    if i == 2:
+                        self.thread3 = threading.Thread(target=Guest.run, args=(self.tables[i].guest,), daemon=True)
+                        self.thread3.start()
+                    if i == 3:
+                        self.thread4 = threading.Thread(target=Guest.run, args=(self.tables[i].guest,), daemon=True)
+                        self.thread4.start()
+                    if i == 4:
+                        self.thread5 = threading.Thread(target=Guest.run, args=(self.tables[i].guest,), daemon=True)
+                        self.thread5.start()
             if self.queue.empty() and free_tables == len(tables):
                 break
         print(f'Завершение обслуживания')
