@@ -1,4 +1,4 @@
-import time
+import datetime
 from multiprocessing import Pool
 
 
@@ -11,21 +11,20 @@ def read_info(name):
 
 filenames = [f'./file {number}.txt' for number in range(1, 5)]
 
+
 # Линейный вызов
-time_1_start = time.time()
+time_start = datetime.datetime.now()
 for i in range(len(filenames)):
     read_info(filenames[i])
-time_1_end = time.time()
-time_1 = time.strftime("%H:%M:%S", time.gmtime(time_1_end - time_1_start))
-print(f'{time_1[1:]}{str(round(time_1_end - time_1_start - int(time_1_end - time_1_start), 6))[1:]} (линейный)')
+time_end = datetime.datetime.now()
+print(f'{time_end - time_start} (линейный)')
 
 """
 # Многопроцессный
 if __name__ == '__main__':
-    time_2_start = time.time()
+    time_start = datetime.datetime.now()
     with Pool(processes=4) as pool:
         process = pool.map(read_info, filenames)
-    time_2_end = time.time()
-    time_2 = time.strftime("%H:%M:%S", time.gmtime(time_2_end - time_2_start))
-    print(f'{time_2[1:]}{str(round(time_2_end - time_2_start - int(time_2_end - time_2_start), 6))[1:]} (многопроцессорный)')
+    time_end = datetime.datetime.now()
+    print(f'{time_end - time_start} (многопроцессорный)')
 """
