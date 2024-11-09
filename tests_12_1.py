@@ -10,7 +10,7 @@ class RunnerTest(unittest.TestCase):
         """
         name_1 = Runner('X')
         for _ in range(10):
-            Runner.walk(name_1)
+            name_1.walk()
         self.assertEqual(name_1.distance, 50)
 
     def test_run(self):
@@ -20,7 +20,7 @@ class RunnerTest(unittest.TestCase):
         """
         name_1 = Runner('X')
         for _ in range(10):
-            Runner.run(name_1)
+            name_1.run()
         self.assertEqual(name_1.distance, 100)
 
     def test_challenge(self):
@@ -31,8 +31,8 @@ class RunnerTest(unittest.TestCase):
         name_1 = Runner('X')
         name_2 = Runner('Y')
         for _ in range(10):
-            Runner.run(name_1)
-            Runner.walk(name_2)
+            name_1.run()
+            name_2.walk()
         self.assertNotEqual(name_1.distance, name_2.distance)
 
 
