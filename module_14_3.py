@@ -46,7 +46,7 @@ async def main_menu(message):
 async def get_buying_list(message):
     for i in range(1, 5):
         await message.answer(f'Название: Product{i} | Описание: описание {i} | Цена: {i*100}')
-        with open(f'files/th_{i}.jpg', 'rb') as jpg:
+        with open(f'files/{i}.jpg', 'rb') as jpg:
             await message.answer_photo(jpg)
     await message.answer('Выберите продукт для покупки:', reply_markup=kb_new)
 
