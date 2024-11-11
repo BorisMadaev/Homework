@@ -9,7 +9,7 @@ from crud_functions import get_all_products
 
 products = get_all_products()
 
-api = "7745156903:AAGuJ6Sa9-vW3i7B-vJyx3vZLdhxLMQ3yPM"
+api = ""
 bot = Bot(token=api)
 dp = Dispatcher(bot, storage=MemoryStorage())
 keyboard = ReplyKeyboardMarkup(resize_keyboard=True)
