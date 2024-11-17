@@ -13,8 +13,7 @@ async def get_message() -> dict:
 
 @app.post('/user/{username}/{age}')
 async def create_message(
-        username:
-        Annotated[str, Path(min_length=5, max_length=20, description='Enter username', examples=['UrbanUser'])],
+        username: Annotated[str, Path(min_length=5, max_length=20, description='Enter username', examples=['UrbanUser'])],
         age: int = Path(ge=18, le=120, description='Enter age', examples=['30'])) -> str:
     user_id = str(int(max(users, key=int)) + 1)
     users[user_id] = str(f'Имя: {username}, возраст: {age}')
@@ -24,15 +23,13 @@ async def create_message(
 @app.put('/user/{user_id}/{username}/{age}')
 async def update_message(
         user_id: Annotated[str, Path(min_length=1, max_length=3, description='Enter user ID', examples=['1'])],
-        username:
-        Annotated[str, Path(min_length=5, max_length=20, description='Enter username', examples=['UrbanUser'])],
+        username: Annotated[str, Path(min_length=5, max_length=20, description='Enter username', examples=['UrbanUser'])],
         age: int = Path(ge=18, le=120, description='Enter age', examples=['30'])) -> str:
     users[user_id] = f'Имя: {username}, возраст: {age}'
     return f'The user {user_id} is updated'
 
 
 @app.delete('/user/{user_id}')
-async def delete_message(
-        user_id: Annotated[str, Path(min_length=1, max_length=3, description='Enter user ID', examples=['1'])]) -> str:
+async def delete_message(user_id: Annotated[str, Path(min_length=1, max_length=3, description='Enter user ID', examples=['1'])]) -> str:
     users.pop(user_id)
     return f'User {user_id} has been deleted'
